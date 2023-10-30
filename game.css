@@ -1,0 +1,21 @@
+body{
+  background-color: #2B3A55;
+}
+
+.red{
+  height: 90px;
+  width: 90px;
+  background-color: red;
+}
+
+.black{
+  height: 90px;
+  width: 90px;
+  background-color: black;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
