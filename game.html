@@ -1,45 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="game.css">
-    <title>Document</title>
+	<title>
+		
+	</title>
+	<link rel="stylesheet" href="game.css">
+
 </head>
-<body>
-    <div id="checkerboard">
-     
-      <div class="row">
-        <div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div>
-      </div>
+<body id="ht">
+<!-- astea 2 sunt puse ca indexarea claselor sa inceapa de la 1 -->
+<div class="checker white_checker" style="display:none"> </div>
+<div class="checker black_checker" style="display:none"> </div>
 
-      <div class="row">
-        <div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div>
-      </div>
-     
-      <div class="row">
-        <div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div>
-      </div>
 
-      <div class="row">
-        <div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div>
-      </div>
+<div class="square" style="display: none" id ="ht"> </div>
+<div class="black_background" id="black_background"> </div>
 
-      <div class="row">
-        <div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div>
-      </div>
+	<div class="score" id="score">
+		<br>
+	</div>
+<div class="table" id="table">
 
-      <div class="row">
-        <div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div>
-      </div>
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>	
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>
+	<div class="checker white_checker"> </div>	
 
-      <div class="row">
-        <div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div>
-      </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
+	<div class="checker black_checker"> </div>
 
-      <div class="row">
-        <div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div><div class="black"></div><div class="red"></div>
-      </div>
-    </div>
-  </body>
+
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="clear_float"> </div>
+	
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="clear_float"> </div>
+
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="clear_float"> </div>
+
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="clear_float"> </div>
+
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="clear_float"> </div>
+
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="clear_float"> </div>
+
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="clear_float"> </div>
+
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="square white_square"> </div>
+	<div class="square black_square"> </div>
+	<div class="clear_float"> </div>
+
+</div>
+
+<script src="game.js" > </script>
+</body>
 </html>
