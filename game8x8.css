@@ -54,7 +54,7 @@ body {
 
 
 .game {
-	background-color: #4c382e;
+	background-image: url("https://t4.ftcdn.net/jpg/03/69/25/05/360_F_369250586_z5HZqoztht4SIMRycXGNsVoELLLKrpjg.jpg");
 	width: 500px;
 	height: 500px;
 	display: flex;
@@ -62,8 +62,8 @@ body {
 }
 
 .game .row {
-	width: 100%;
-	height: 10%;
+	width: 125%;
+	height: 20%;
 	display: flex;
 }
 
@@ -94,7 +94,7 @@ body {
 }
 
 .game .row .column.blackCase {
-	background-color: #ecc59a;
+	background-image: url("https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BmLXMxMjUtYWtlNzAwNS1hLmpwZw.jpg");
 }
 
 .readyToMove {
@@ -213,7 +213,7 @@ body {
 	border-radius: 5px;
 }
 
-#start{
+.start{
 	padding: 15px 32px;
 	font-size: 20px;
 }
@@ -222,3 +222,33 @@ body {
 	padding: 15px 32px;
 	font-size: 20px;
 }
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #b1102b;
+  }
+  
+  li {
+	float: left;
+	padding: auto;
+  }
+  
+  li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+  }
+  
+  li a:hover {
+	background-color: #13284c;
+  }
+
+  img{
+	height: 47px;
+	width: auto;
+  }
