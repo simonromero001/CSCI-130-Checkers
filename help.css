@@ -21,3 +21,31 @@ ul {
   li a:hover {
     background-color: #13284c;   
   }
+
+   img{
+    height: 47px;
+    width: auto;
+    }
+
+button{
+    display: block;
+    background-color: #13284c;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 0 auto;
+    
+}
+
+button:hover {
+    background-color: #b1102b;
+}
+
+
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+

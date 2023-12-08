@@ -224,31 +224,53 @@ body {
 }
 
 ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #b1102b;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #b1102b;
   }
   
   li {
-	float: left;
-	padding: auto;
+    float: left;
   }
   
   li a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
   }
   
   li a:hover {
-	background-color: #13284c;
+    background-color: #13284c;   
   }
 
-  img{
-	height: 47px;
-	width: auto;
-  }
+   img{
+    height: 47px;
+    width: auto;
+    }
+
+button{
+    display: block;
+    background-color: #13284c;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 0 auto;
+    
+}
+
+button:hover {
+    background-color: #b1102b;
+}
+
+
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
