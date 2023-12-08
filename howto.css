@@ -19,5 +19,11 @@ ul {
   }
   
   li a:hover {
-    background-color: #13284c;
+    background-color: #13284c;   
   }
+
+.instructions{
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
