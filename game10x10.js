@@ -1,12 +1,12 @@
 class Piece {
-	constructor(row, column) {
-		this.row = row;
-		this.column = column;
-	}
+    constructor(row, column) {
+        this.row = row;
+        this.column = column;
+    }
 
-	compare(piece) {
-		return piece.row === this.row && piece.column === this.column;
-	}
+    compare(piece) {
+        return piece.row === this.row && piece.column === this.column;
+    }
 }
 
 const modal = document.getElementById("easyModal");
@@ -15,19 +15,42 @@ let currentPlayer = -1;
 let posNewPosition = [];
 let capturedPosition = [];
 let readyToMove = null;
+let player1Color = 'black';
+let player2Color = 'white';
 
 let board = [
-	[0, -1, 0, -1, 0, -1, 0, -1, 0, -1],
-	[-1, 0, -1, 0, -1, 0, -1, 0, -1, 0],
-	[0, -1, 0, -1, 0, -1, 0, -1, 0, -1],
-	[-1, 0, -1, 0, -1, 0, -1, 0, -1, 0],
-	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	[0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-	[1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
-	[0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-	[1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+    [0, -1, 0, -1, 0, -1, 0, -1, 0, -1],
+    [-1, 0, -1, 0, -1, 0, -1, 0, -1, 0],
+    [0, -1, 0, -1, 0, -1, 0, -1, 0, -1],
+    [-1, 0, -1, 0, -1, 0, -1, 0, -1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
 ];
+
+let boardTextures = ["url('https://unblast.com/wp-content/uploads/2023/08/walnut-wood-texture-2.jpg')", "url('https://www.onairdesign.com/cdn/shop/products/OA-139_Light_Wood_Texture_Board_LIGHTWOODTEXTUREBOARD_92958557-d376-4374-bccf-cd1a7b73a5bc_960x.jpg?v=1686262121')"];
+
+var timerElement = document.getElementById('timer');
+
+// Get the start time when the page loads
+var startTime = new Date().getTime();
+
+// Update the timer every second
+setInterval(updateTimer, 1000);
+
+function updateTimer() {
+    // Get the current time
+    var currentTime = new Date().getTime();
+
+    // Calculate the time difference
+    var elapsedTime = Math.floor((currentTime - startTime) / 1000);
+
+    // Update the timer element
+    timerElement.textContent = "Time: " + elapsedTime + " seconds";
+}
 
 function movePiece(e) {
     let piece = e.target;
@@ -178,8 +201,10 @@ function builBoard() {
             // add the piece if the case isn't empty
             if (board[i][j] === 1) {
                 occupied = "whitePiece";
+                piece.style.backgroundColor = player2Color; // Set the color here
             } else if (board[i][j] === -1) {
                 occupied = "blackPiece";
+                piece.style.backgroundColor = player1Color; // Set the color here
             } else {
                 occupied = "empty";
             }
@@ -191,11 +216,10 @@ function builBoard() {
             piece.setAttribute("column", j);
             piece.setAttribute("data-position", i + "-" + j);
 
-            //add event listener to each piece
+            // add event listener to each piece
             piece.addEventListener("click", movePiece);
 
             col.appendChild(piece);
-
             col.setAttribute("class", "column " + caseType);
             row.appendChild(col);
 
@@ -297,3 +321,47 @@ function modalClose() {
 function reverse(player) {
     return player === -1 ? 1 : -1;
 }
+
+function changePieceColors(player) {
+    var elements;
+    let randomColor = getRandomColor();
+    if (player === 1) {
+        elements = document.getElementsByClassName('blackPiece');
+        player1Color = randomColor;
+    } else if (player === 2) {
+        elements = document.getElementsByClassName('whitePiece');
+        player2Color = randomColor;
+    } else {
+        return; // Handle invalid player values
+    }
+    // Loop through the elements
+    for (var i = 0; i < elements.length; i++) {
+        // Do something with each element
+        elements[i].style.backgroundColor = randomColor;
+    }
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function changeBoardTexture(){
+    var board1 = document.querySelector(".game");
+    var board2 = document.querySelector(".blackCase");
+
+    board1.style.backgroundImage = getRandomElement(boardTextures);
+    board2.style.backgroundImage = getRandomElement(boardTextures);
+}
+
+function getRandomElement(array) {
+    var randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+}
+
+// Initial board rendering
+builBoard();

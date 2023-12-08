@@ -12,10 +12,21 @@
 	<ul>
 		<li><img src="https://1000logos.net/wp-content/uploads/2019/11/Fresno-State-Bulldogs-Logo-1992.png"></li>
 		<li><a class="active" href="index.html">Home</a></li>
+		<li><a class="active" href="login.html">Login/Sign up</a></li>
+        <li><a class="active" href="help.html">Help</a></li>
+        <li><a class="active" href="contact.html">Contact</a></li>
+        <li><a class="active" href="pickgame.html">Play</a></li>
+        <li><a class="active" href="leaderboard.html">Leaderboard</a></li>
+        <li><a class="active" href="howto.html">How to</a></li>
 	</ul>
 	<div class="container">
 		<table class="game" id="game"></table>
 		<button id="restart" onclick="location.href='pickgame.html'">Restart</button>
+		<button id="color" onclick="changePieceColors(1)">Change Player 1 Color</button>
+		<button id="color" onclick="changePieceColors(2)">Change Player 2 Color</button>
+	</div>
+	<div>
+		<p id="timer">Time: 0 seconds</p>
 	</div>
 	<script src="game8x8.js"></script>
 </body>

@@ -15,6 +15,8 @@ let currentPlayer = -1;
 let posNewPosition = [];
 let capturedPosition = [];
 let readyToMove = null; // Added missing declaration
+let player1Color = 'black';
+let player2Color = 'white';
 
 let board = [
     [0, -1, 0, -1, 0, -1, 0, -1],
@@ -26,6 +28,25 @@ let board = [
     [0, 1, 0, 1, 0, 1, 0, 1],
     [1, 0, 1, 0, 1, 0, 1, 0],
 ];
+
+var timerElement = document.getElementById('timer');
+
+// Get the start time when the page loads
+var startTime = new Date().getTime();
+
+// Update the timer every second
+setInterval(updateTimer, 1000);
+
+function updateTimer() {
+    // Get the current time
+    var currentTime = new Date().getTime();
+
+    // Calculate the time difference
+    var elapsedTime = Math.floor((currentTime - startTime) / 1000);
+
+    // Update the timer element
+    timerElement.textContent = "Time: " + elapsedTime + " seconds";
+}
 
 function movePiece(e) {
     let piece = e.target;
@@ -176,8 +197,10 @@ function builBoard() {
             // add the piece if the case isn't empty
             if (board[i][j] === 1) {
                 occupied = "whitePiece";
+                piece.style.backgroundColor = player2Color; // Set the color here
             } else if (board[i][j] === -1) {
                 occupied = "blackPiece";
+                piece.style.backgroundColor = player1Color; // Set the color here
             } else {
                 occupied = "empty";
             }
@@ -189,11 +212,10 @@ function builBoard() {
             piece.setAttribute("column", j);
             piece.setAttribute("data-position", i + "-" + j);
 
-            //add event listener to each piece
+            // add event listener to each piece
             piece.addEventListener("click", movePiece);
 
             col.appendChild(piece);
-
             col.setAttribute("class", "column " + caseType);
             row.appendChild(col);
 
@@ -295,3 +317,34 @@ function modalClose() {
 function reverse(player) {
     return player === -1 ? 1 : -1;
 }
+
+function changePieceColors(player) {
+    var elements;
+	let randomColor = getRandomColor();
+    if (player === 1) {
+        elements = document.getElementsByClassName('blackPiece');
+		player1Color = randomColor;
+    } else if (player === 2) {
+        elements = document.getElementsByClassName('whitePiece');
+		player2Color = randomColor;
+    } else {
+        return; // Handle invalid player values
+    }
+    // Loop through the elements
+    for (var i = 0; i < elements.length; i++) {
+        // Do something with each element
+        elements[i].style.backgroundColor = randomColor;
+    }
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+// Initial board rendering
+builBoard();

@@ -118,7 +118,7 @@ body {
 	position: relative;
 	font-size: 16px;
 	line-height: 1.6;
-	color: #fff;
+	color: #000000;
 	/* background-image: url(https://picsum.photos/1920/1080); */
 	background-size: cover;
 	width: 100vw;
@@ -219,6 +219,11 @@ body {
 }
 
 #restart{
+	padding: 15px 32px;
+	font-size: 20px;
+}
+
+#color{
 	padding: 15px 32px;
 	font-size: 20px;
 }

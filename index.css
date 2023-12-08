@@ -1,51 +1,67 @@
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #b1102b;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color: #13284c;   
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #b1102b;
+}
 
-   img{
-    height: 47px;
-    width: auto;
-    }
+li {
+  float: left;
+}
 
-button{
-    display: block;
-    background-color: #13284c;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 15px;
-    margin: 0 auto;
-    
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #13284c;
+}
+
+img {
+  height: 47px;
+  width: auto;
+}
+
+button {
+  display: block;
+  background-color: #13284c;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 15px;
+  margin: 0 auto;
+
 }
 
 button:hover {
-    background-color: #b1102b;
+  background-color: #b1102b;
 }
 
 
 
 h1 {
-    text-align: center;
-    margin: 20px 0;
+  text-align: center;
+  margin: 20px 0;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	font-family: sans-serif;
+	position: relative;
+	font-size: 16px;
+	line-height: 1.6;
+	color: #000000;
+	/* background-image: url(https://picsum.photos/1920/1080); */
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+}
