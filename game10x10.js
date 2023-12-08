@@ -31,7 +31,8 @@ let board = [
     [1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
 ];
 
-let boardTextures = ["url('https://unblast.com/wp-content/uploads/2023/08/walnut-wood-texture-2.jpg')", "url('https://www.onairdesign.com/cdn/shop/products/OA-139_Light_Wood_Texture_Board_LIGHTWOODTEXTUREBOARD_92958557-d376-4374-bccf-cd1a7b73a5bc_960x.jpg?v=1686262121')"];
+let boardTextures = ["url('https://st.depositphotos.com/1176848/1409/i/950/depositphotos_14093520-stock-photo-light-woodgrain-texture.jpg')", "url('https://www.onairdesign.com/cdn/shop/products/OA-139_Light_Wood_Texture_Board_LIGHTWOODTEXTUREBOARD_92958557-d376-4374-bccf-cd1a7b73a5bc_960x.jpg?v=1686262121')",
+"url('https://live.staticflickr.com/3086/2705644192_7421d4a9ef_b.jpg')", "url('https://t4.ftcdn.net/jpg/03/69/25/05/360_F_369250586_z5HZqoztht4SIMRycXGNsVoELLLKrpjg.jpg')"];
 
 var timerElement = document.getElementById('timer');
 
@@ -234,6 +235,21 @@ function builBoard() {
         game.appendChild(row);
     }
 
+    const piecesCount = getPiecesCount();
+
+    if (piecesCount.black > piecesCount.white){
+        document.getElementById("blackPiecesCount").textContent = `Currently Winning: Black: ${piecesCount.black}`;
+        document.getElementById("whitePiecesCount").textContent = `White Pieces: ${piecesCount.white}`;
+    }
+    else if (piecesCount.black < piecesCount.white){
+        document.getElementById("blackPiecesCount").textContent = `Black Pieces: ${piecesCount.black}`;
+        document.getElementById("whitePiecesCount").textContent = `Currently Winning: White Pieces: ${piecesCount.white}`;
+    }
+    else{
+        document.getElementById("blackPiecesCount").textContent = `Black Pieces: ${piecesCount.black}`;
+        document.getElementById("whitePiecesCount").textContent = `White Pieces: ${piecesCount.white}`;
+    }
+
     if (black === 0 || white === 0) {
         modalOpen(black);
     }
@@ -322,6 +338,23 @@ function reverse(player) {
     return player === -1 ? 1 : -1;
 }
 
+function getPiecesCount() {
+    let black = 0;
+    let white = 0;
+
+    for (let i = 0; i < board.length; i++) {
+        for (let j = 0; j < board[i].length; j++) {
+            if (board[i][j] === -1) {
+                black++;
+            } else if (board[i][j] === 1) {
+                white++;
+            }
+        }
+    }
+
+    return { black, white };
+}
+
 function changePieceColors(player) {
     var elements;
     let randomColor = getRandomColor();
@@ -352,10 +385,8 @@ function getRandomColor() {
 
 function changeBoardTexture(){
     var board1 = document.querySelector(".game");
-    var board2 = document.querySelector(".blackCase");
 
     board1.style.backgroundImage = getRandomElement(boardTextures);
-    board2.style.backgroundImage = getRandomElement(boardTextures);
 }
 
 function getRandomElement(array) {

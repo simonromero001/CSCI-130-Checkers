@@ -29,6 +29,10 @@ let board = [
     [1, 0, 1, 0, 1, 0, 1, 0],
 ];
 
+let boardTextures = ["url('https://st.depositphotos.com/1176848/1409/i/950/depositphotos_14093520-stock-photo-light-woodgrain-texture.jpg')", "url('https://www.onairdesign.com/cdn/shop/products/OA-139_Light_Wood_Texture_Board_LIGHTWOODTEXTUREBOARD_92958557-d376-4374-bccf-cd1a7b73a5bc_960x.jpg?v=1686262121')",
+"url('https://live.staticflickr.com/3086/2705644192_7421d4a9ef_b.jpg')", "url('https://t4.ftcdn.net/jpg/03/69/25/05/360_F_369250586_z5HZqoztht4SIMRycXGNsVoELLLKrpjg.jpg')"];
+
+
 var timerElement = document.getElementById('timer');
 
 // Get the start time when the page loads
@@ -320,13 +324,13 @@ function reverse(player) {
 
 function changePieceColors(player) {
     var elements;
-	let randomColor = getRandomColor();
+    let randomColor = getRandomColor();
     if (player === 1) {
         elements = document.getElementsByClassName('blackPiece');
-		player1Color = randomColor;
+        player1Color = randomColor;
     } else if (player === 2) {
         elements = document.getElementsByClassName('whitePiece');
-		player2Color = randomColor;
+        player2Color = randomColor;
     } else {
         return; // Handle invalid player values
     }
@@ -335,6 +339,17 @@ function changePieceColors(player) {
         // Do something with each element
         elements[i].style.backgroundColor = randomColor;
     }
+}
+
+function changeBoardTexture(){
+    var board1 = document.querySelector(".game");
+
+    board1.style.backgroundImage = getRandomElement(boardTextures);
+}
+
+function getRandomElement(array) {
+    var randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
 }
 
 function getRandomColor() {
