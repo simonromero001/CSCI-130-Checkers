@@ -16,7 +16,7 @@
         <li><a class="active" href="leaderboard.html">Leaderboard</a></li>
         <li><a class="active" href="howto.html">How to</a></li>
 	</ul>
-    
+    <div id="userInfo"></div>
     <div class="container">
         <form action="login.php" method="post">
             <h1>Login</h1>
@@ -42,5 +42,30 @@
             <button type="submit">Sign Up</button>
         </form>
     </div>
+
+    <script>
+        // Function to get the value of a cookie by name
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split('=');
+                if (cookieName === name) {
+                    return decodeURIComponent(cookieValue);
+                }
+            }
+            return null;
+        }
+
+        // Get the user_id cookie value
+        const userId = getCookie('username');
+
+        // Display user information
+        const userInfoContainer = document.getElementById('userInfo');
+        if (userId) {
+            userInfoContainer.textContent = 'User ID: ' + userId;
+        } else {
+            userInfoContainer.textContent = 'User ID not found.';
+        }
+    </script>
 </body>
 </html>
