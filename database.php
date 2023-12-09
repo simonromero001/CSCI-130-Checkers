@@ -35,7 +35,6 @@ if (!$tableExists) {
 }
 
 if (mysqli_num_rows($tableExists) == 0) {
-    // Table does not exist, create it
     $createTableQuery = "CREATE TABLE $tableName (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(30) NOT NULL,

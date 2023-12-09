@@ -6,7 +6,6 @@ $dbname = "CheckersDB";
 
 $conn = new mysqli($servername, $DBusername, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -20,10 +19,7 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $currentGamesPlayed = $row['gamesplayed'];
 
-    // Increment the value
     $newGamesPlayed = $currentGamesPlayed + 1;
-
-    // Update the database with the new value
     $sqlUpdate = "UPDATE CheckersTable SET gamesplayed = $newGamesPlayed WHERE username = '$username'";
     
     if ($conn->query($sqlUpdate) === TRUE) {

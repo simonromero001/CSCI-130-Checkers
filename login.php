@@ -7,20 +7,16 @@ $dbname = "CheckersDB";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get username and password from POST request
 $userInput = $_POST['username'];
 $passInput = $_POST['password'];
 
-// Use prepared statement to avoid SQL injection
 $sql = "SELECT * FROM CheckersTable WHERE username = '$userInput' AND password = '$passInput'";
 $result = $conn->query($sql);
 
-// Check if a row was returned (login successful)
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     session_start();
@@ -28,7 +24,6 @@ if ($result->num_rows > 0) {
     $_SESSION['password'] = $row['password'];
 }
 
-// Close the connection
 $conn->close();
 ?>
 

@@ -6,7 +6,6 @@ $dbname = "CheckersDB";
 
 $conn = new mysqli($servername, $DBusername, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -14,7 +13,6 @@ if ($conn->connect_error) {
 $username = $_GET["username"];
 $time = $_GET["time"];
 
-// Update gameswon
 $sqlSelect = "SELECT gameswon FROM CheckersTable WHERE username = '$username'";
 $result = $conn->query($sqlSelect);
 
@@ -22,10 +20,8 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $currentGamesWon = $row['gameswon'];
 
-    // Increment the value
     $newGamesWon = $currentGamesWon + 1;
 
-    // Update the database with the new value
     $sqlUpdate = "UPDATE CheckersTable SET gameswon = $newGamesWon WHERE username = '$username'";
     
     if ($conn->query($sqlUpdate) === TRUE) {
@@ -37,7 +33,6 @@ if ($result->num_rows > 0) {
     echo "No user found with the specified username.\n";
 }
 
-// Update timeplayed
 $sqlSelect = "SELECT timeplayed FROM CheckersTable WHERE username = '$username'";
 $result = $conn->query($sqlSelect);
 
@@ -45,10 +40,8 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $currentTimePlayed = $row['timeplayed'];
 
-    // Increment the value
     $newTimePlayed = $currentTimePlayed + $time;
 
-    // Update the database with the new value
     $sqlUpdate = "UPDATE CheckersTable SET timeplayed = $newTimePlayed WHERE username = '$username'";
     
     if ($conn->query($sqlUpdate) === TRUE) {
@@ -60,6 +53,5 @@ if ($result->num_rows > 0) {
     echo "No user found with the specified username.\n";
 }
 
-// Close the database connection
 $conn->close();
 ?>
