@@ -251,7 +251,7 @@ function builBoard() {
     }
 
     if (black === 0 || white === 0) {
-        modalOpen(black);
+        checkWinner();
     }
 }
 
@@ -324,14 +324,17 @@ function findPieceCaptured(p, player) {
     return found;
 }
 
-function modalOpen(black) {
-    document.getElementById("winner").innerHTML = black === 0 ? "White" : "Black";
-    document.getElementById("loser").innerHTML = black !== 0 ? "White" : "Black";
-    modal.classList.add("effect");
-}
+function checkWinner() {
+    const piecesCount = getPiecesCount();
 
-function modalClose() {
-    modal.classList.remove("effect");
+    if (piecesCount.black == 0){
+        document.getElementById("blackPiecesCount").textContent = `Black Loses`;
+        document.getElementById("whitePiecesCount").textContent = `White Wins`;
+    }
+    else{
+        document.getElementById("blackPiecesCount").textContent = `Black Wins`;
+        document.getElementById("whitePiecesCount").textContent = `White Loses`;
+    }
 }
 
 function reverse(player) {

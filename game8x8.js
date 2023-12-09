@@ -234,8 +234,23 @@ function builBoard() {
         game.appendChild(row);
     }
 
+    const piecesCount = getPiecesCount();
+
+    if (piecesCount.black > piecesCount.white){
+        document.getElementById("blackPiecesCount").textContent = `Currently Winning: Black: ${piecesCount.black}`;
+        document.getElementById("whitePiecesCount").textContent = `White Pieces: ${piecesCount.white}`;
+    }
+    else if (piecesCount.black < piecesCount.white){
+        document.getElementById("blackPiecesCount").textContent = `Black Pieces: ${piecesCount.black}`;
+        document.getElementById("whitePiecesCount").textContent = `Currently Winning: White Pieces: ${piecesCount.white}`;
+    }
+    else{
+        document.getElementById("blackPiecesCount").textContent = `Black Pieces: ${piecesCount.black}`;
+        document.getElementById("whitePiecesCount").textContent = `White Pieces: ${piecesCount.white}`;
+    }
+
     if (black === 0 || white === 0) {
-        modalOpen(black);
+        checkWinner();
     }
 }
 
@@ -308,15 +323,19 @@ function findPieceCaptured(p, player) {
     return found;
 }
 
-function modalOpen(black) {
-    document.getElementById("winner").innerHTML = black === 0 ? "White" : "Black";
-    document.getElementById("loser").innerHTML = black !== 0 ? "White" : "Black";
-    modal.classList.add("effect");
+function checkWinner() {
+    const piecesCount = getPiecesCount();
+
+    if (piecesCount.black == 0){
+        document.getElementById("blackPiecesCount").textContent = `Black Loses`;
+        document.getElementById("whitePiecesCount").textContent = `White Wins`;
+    }
+    else{
+        document.getElementById("blackPiecesCount").textContent = `Black Wins`;
+        document.getElementById("whitePiecesCount").textContent = `White Loses`;
+    }
 }
 
-function modalClose() {
-    modal.classList.remove("effect");
-}
 
 function reverse(player) {
     return player === -1 ? 1 : -1;
@@ -341,6 +360,23 @@ function changePieceColors(player) {
     }
 }
 
+function getPiecesCount() {
+    let black = 0;
+    let white = 0;
+
+    for (let i = 0; i < board.length; i++) {
+        for (let j = 0; j < board[i].length; j++) {
+            if (board[i][j] === -1) {
+                black++;
+            } else if (board[i][j] === 1) {
+                white++;
+            }
+        }
+    }
+
+    return { black, white };
+}
+
 function changeBoardTexture(){
     var board1 = document.querySelector(".game");
 
@@ -361,5 +397,4 @@ function getRandomColor() {
     return color;
 }
 
-// Initial board rendering
 builBoard();
