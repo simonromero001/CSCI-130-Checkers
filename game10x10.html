@@ -8,7 +8,7 @@
 	<title>Checkers</title>
 </head>
 
-<body onload="builBoard()">
+<body onload="builBoard(); startTimer(); addGame();">
 	<ul>
 		<li><img src="https://1000logos.net/wp-content/uploads/2019/11/Fresno-State-Bulldogs-Logo-1992.png"></li>
 		<li><a class="active" href="index.html">Home</a></li>
@@ -17,7 +17,35 @@
 		<li><a class="active" href="pickgame.html">Play</a></li>
 		<li><a class="active" href="leaderboard.html">Leaderboard</a></li>
 		<li><a class="active" href="howto.html">How to</a></li>
+		<li><a class="active" href="logout.php">Logout</a></li>
 	</ul>
+	<div id="userInfo"></div>
+
+    <script>
+        // Use AJAX to get session data from PHP
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'getSession.php', true);
+        xhr.setRequestHeader('Content-type', 'application/json');
+        
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const userInfoContainer = document.getElementById('userInfo');
+                var responseData = JSON.parse(xhr.responseText);
+                var username = responseData.username;
+
+                if (username !== '') {
+                    console.log('Username from session:', username);
+                    userInfoContainer.textContent = 'Username: ' + username; // Fix here
+                    // Now you can use the 'username' variable in your JavaScript code
+                } else {
+                    console.log('User not logged in.');
+                    userInfoContainer.textContent = 'Not logged in!';
+                }
+            }
+        };
+        
+        xhr.send();
+    </script>
 	<div class="container">
 		<div id="blackPiecesCount"></div>
 		<div id="whitePiecesCount"></div>

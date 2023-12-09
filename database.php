@@ -26,20 +26,33 @@ if($dbExistsResult->num_rows > 0) {
 
 $conn->select_db($dbname);
 
-$sql = "CREATE TABLE CheckersTable (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-username VARCHAR(30) NOT NULL,
-password VARCHAR(30) NOT NULL,
-gamesplayed INT(30) NOT NULL,
-gameswon INT(30) NOT NULL,
-timeplayed INT(30) NOT NULL,
-reg_date TIMESTAMP
-)";
+$tableName = "CheckersTable";
+$checkTableQuery = "SHOW TABLES LIKE '$tableName'";
+$tableExists = mysqli_query($conn, $checkTableQuery);
 
-if($conn->query($sql) === TRUE) {
-    echo "Table CheckersTable created successfully";
+if (!$tableExists) {
+    die("Error checking table existence: " . mysqli_error($conn));
+}
+
+if (mysqli_num_rows($tableExists) == 0) {
+    // Table does not exist, create it
+    $createTableQuery = "CREATE TABLE $tableName (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(30) NOT NULL,
+        password VARCHAR(30) NOT NULL,
+        gamesplayed INT(30) NOT NULL,
+        gameswon INT(30) NOT NULL,
+        timeplayed INT(30) NOT NULL,
+        reg_date TIMESTAMP
+    )";
+
+    if (mysqli_query($conn, $createTableQuery)) {
+        echo "Table $tableName created successfully.";
+    } else {
+        echo "Error creating table: " . mysqli_error($conn);
+    }
 } else {
-    echo "Error creating table: ".$conn->error;
+    echo "Table $tableName already exists.";
 }
 
 $conn->close();

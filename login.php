@@ -23,11 +23,9 @@ $result = $conn->query($sql);
 // Check if a row was returned (login successful)
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $cookieName = "username";
-    $cookieValue = $row['username'];
-    $cookieExpiration = time() + (86400 * 30); // 30 days
-
-    setcookie($cookieName, $cookieValue, $cookieExpiration, "/");
+    session_start();
+    $_SESSION['username'] = $row['username'];
+    $_SESSION['password'] = $row['password'];
 }
 
 // Close the connection
@@ -36,33 +34,34 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
     <title>Document</title>
 </head>
+
 <body>
-	<ul>
-		<li><img src="https://1000logos.net/wp-content/uploads/2019/11/Fresno-State-Bulldogs-Logo-1992.png"></li>
-		<li><a class="active" href="index.html">Home</a></li>
+    <ul>
+        <li><img src="https://1000logos.net/wp-content/uploads/2019/11/Fresno-State-Bulldogs-Logo-1992.png"></li>
+        <li><a class="active" href="index.html">Home</a></li>
         <li><a class="active" href="login.html">Login/Sign up</a></li>
         <li><a class="active" href="contact.html">Contact</a></li>
         <li><a class="active" href="pickgame.html">Play</a></li>
         <li><a class="active" href="leaderboard.html">Leaderboard</a></li>
         <li><a class="active" href="howto.html">How to</a></li>
-	</ul>
-    <div id="userInfo">
-        <?php
-        // Check if the user_id cookie is set
-        if (isset($_COOKIE['username'])) {
-            $username = $_COOKIE['username'];
-            echo 'Username: ' . htmlspecialchars($username);
-        } else {
-            echo 'Username not found.';
-        }
-        ?>
+        <li><a class="active" href="logout.php">Logout</a></li>
+    </ul>
     </div>
+    <?php
+
+    if (isset($_SESSION['username'])) {
+        echo '<p>Hello, ' . $_SESSION['username'] . '!</p>';
+    } else {
+        echo 'Not Logged In';
+    }
+    ?>
     <div class="container">
         <form action="login.php" method="post">
             <h1>Login</h1>
@@ -89,5 +88,5 @@ $conn->close();
         </form>
     </div>
 </body>
-</html>
 
+</html>

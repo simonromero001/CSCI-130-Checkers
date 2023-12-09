@@ -15,7 +15,34 @@
         <li><a class="active" href="pickgame.html">Play</a></li>
         <li><a class="active" href="leaderboard.html">Leaderboard</a></li>
         <li><a class="active" href="howto.html">How to</a></li>
+        <li><a class="active" href="logout.php">Logout</a></li>
 	</ul>
+    <div id="userInfo"></div>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'getSession.php', true);
+        xhr.setRequestHeader('Content-type', 'application/json');
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                const userInfoContainer = document.getElementById('userInfo');
+                var responseData = JSON.parse(xhr.responseText);
+                var username = responseData.username;
+
+                if (username !== '') {
+                    console.log('Username from session:', username);
+                    userInfoContainer.textContent = 'Username: ' + username; // Fix here
+                    // Now you can use the 'username' variable in your JavaScript code
+                } else {
+                    console.log('User not logged in.');
+                    userInfoContainer.textContent = 'Not logged in!';
+                }
+            }
+        };
+
+        xhr.send();
+    </script>
     <h1>Choose your game type:</h1>
     <button onclick="location.href='game10x10.html'">Start 10x10 Game</button>
     <button onclick="location.href='game8x8.html'">Start 8x8 Game</button>

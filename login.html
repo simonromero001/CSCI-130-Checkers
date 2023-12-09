@@ -1,27 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
     <title>Document</title>
 </head>
-<body>
-	<ul>
-		<li><img src="https://1000logos.net/wp-content/uploads/2019/11/Fresno-State-Bulldogs-Logo-1992.png"></li>
-		<li><a class="active" href="index.html">Home</a></li>
+
+<body onload="createDB()">
+    <ul>
+        <li><img src="https://1000logos.net/wp-content/uploads/2019/11/Fresno-State-Bulldogs-Logo-1992.png"></li>
+        <li><a class="active" href="index.html">Home</a></li>
         <li><a class="active" href="login.html">Login/Sign up</a></li>
         <li><a class="active" href="contact.html">Contact</a></li>
         <li><a class="active" href="pickgame.html">Play</a></li>
         <li><a class="active" href="leaderboard.html">Leaderboard</a></li>
         <li><a class="active" href="howto.html">How to</a></li>
-	</ul>
+        <li><a class="active" href="logout.php">Logout</a></li>
+    </ul>
     <div id="userInfo"></div>
+
+    <script>
+        // Use AJAX to get session data from PHP
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'getSession.php', true);
+        xhr.setRequestHeader('Content-type', 'application/json');
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                const userInfoContainer = document.getElementById('userInfo');
+                var responseData = JSON.parse(xhr.responseText);
+                var username = responseData.username;
+
+                if (username !== '') {
+                    console.log('Username from session:', username);
+                    userInfoContainer.textContent = 'Username: ' + username; // Fix here
+                    // Now you can use the 'username' variable in your JavaScript code
+                } else {
+                    console.log('User not logged in.');
+                    userInfoContainer.textContent = 'Not logged in!';
+                }
+            }
+        };
+
+        xhr.send();
+
+        function createDB() {
+            var xhr2 = new XMLHttpRequest();
+            xhr2.open('GET', 'database.php', true);
+            xhr2.setRequestHeader('Content-type', 'application/json');
+
+            xhr2.onload = function () {
+                if (xhr2.status === 200) {
+                }
+            };
+
+            xhr2.send();
+        }
+    </script>
     <div class="container">
         <form action="login.php" method="post">
             <h1>Login</h1>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="use  rname" name="username" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
@@ -42,30 +84,6 @@
             <button type="submit">Sign Up</button>
         </form>
     </div>
-
-    <script>
-        // Function to get the value of a cookie by name
-        function getCookie(name) {
-            const cookies = document.cookie.split('; ');
-            for (const cookie of cookies) {
-                const [cookieName, cookieValue] = cookie.split('=');
-                if (cookieName === name) {
-                    return decodeURIComponent(cookieValue);
-                }
-            }
-            return null;
-        }
-
-        // Get the user_id cookie value
-        const userId = getCookie('username');
-
-        // Display user information
-        const userInfoContainer = document.getElementById('userInfo');
-        if (userId) {
-            userInfoContainer.textContent = 'User ID: ' + userId;
-        } else {
-            userInfoContainer.textContent = 'User ID not found.';
-        }
-    </script>
 </body>
+
 </html>

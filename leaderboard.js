@@ -13,11 +13,9 @@ class Users {
     }
 }
 
-
 let newArr = [];
 
-
-function sortDBByGamesWon() {
+function sortDBByIndex() {
     var httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -112,7 +110,7 @@ function sortDBByName() {
                 let myDiv = document.getElementById('insertStuffHere');
                 myDiv.innerHTML = '';
                 for (let i = 0; i < newArr.length; i++){
-                    myDiv.innerHTML += (newArr[i].UserName + ' ' + newArr[i].GamesWon + ' ' + newArr[i].GamesPlayed + ' ' + newArr[i].TimePlayed + ' ');
+                    myDiv.innerHTML += (newArr[i].username + ' ' + newArr[i].gamesplayed);
                 }
             }
         }
