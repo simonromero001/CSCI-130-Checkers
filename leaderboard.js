@@ -1,3 +1,27 @@
+class Users {
+    UserName;
+    JapaneseName;
+    Birthday;
+    Height;
+    Weight;
+    BloodType;
+    ProductionCompany;
+    AllStarPro;
+    Image;
+
+    constructor(romajiName, japaneseName, birthday, height, weight, bloodType, productionCompany, allStarPro, image) {
+        this.RomajiName = romajiName;
+        this.JapaneseName = japaneseName;
+        this.Birthday = birthday;
+        this.Height = height;
+        this.Weight = weight
+        this.BloodType = bloodType;
+        this.ProductionCompany = productionCompany;
+        this.AllStarPro = allStarPro;
+        this.Image = image;
+    }
+}
+
 function sortDBByIndex() {
     var httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = function () {
@@ -38,7 +62,8 @@ function sortDBByName() {
                         data[i].productioncompany, checkBool, data[i].image);
                     newArr[i] = temp;
                 }
-                setup();
+                let myDiv = document.getElementById('insertStuffHere');
+                myDiv.innerHTML = '';
             }
         }
     }
