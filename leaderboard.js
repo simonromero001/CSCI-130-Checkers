@@ -1,28 +1,23 @@
 class Users {
     UserName;
-    JapaneseName;
-    Birthday;
-    Height;
-    Weight;
-    BloodType;
-    ProductionCompany;
-    AllStarPro;
-    Image;
+    GamesWon;
+    GamesPlayed;
+    TimePlayed;
 
-    constructor(romajiName, japaneseName, birthday, height, weight, bloodType, productionCompany, allStarPro, image) {
-        this.RomajiName = romajiName;
-        this.JapaneseName = japaneseName;
-        this.Birthday = birthday;
-        this.Height = height;
-        this.Weight = weight
-        this.BloodType = bloodType;
-        this.ProductionCompany = productionCompany;
-        this.AllStarPro = allStarPro;
-        this.Image = image;
+
+    constructor(userName, gamesWon, gamesPlayed, timePlayed) {
+        this.UserName = userName;
+        this.GamesWon = gamesWon;
+        this.GamesPlayed = gamesPlayed;
+        this.TimePlayed = timePlayed;
     }
 }
 
-function sortDBByIndex() {
+
+let newArr = [];
+
+
+function sortDBByGamesWon() {
     var httpRequest = new XMLHttpRequest();
     httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -30,19 +25,73 @@ function sortDBByIndex() {
                 newArr = [];
                 let data = JSON.parse(httpRequest.responseText);
                 for (let i = 0; i < data.length; i++) {
-                    let checkBool = false;
-                    if (data[i].allstarpro == 1) checkBool = true;
-                    const temp = new Idol(data[i].romajiname, data[i].japanesename,
-                        data[i].birthday, data[i].height,
-                        data[i].weight, data[i].bloodtype,
-                        data[i].productioncompany, checkBool, data[i].image);
+
+
+                    const temp = new Users(data[i].username, data[i].gameswon,
+                        data[i].gamesplayed, data[i].timeplayed);
                     newArr[i] = temp;
                 }
-                setup();
+                let myDiv = document.getElementById('insertStuffHere');
+                myDiv.innerHTML = '';
+                for (let i = 0; i < newArr.length; i++){
+                    myDiv.innerHTML += (newArr[i].UserName + ' ' + newArr[i].GamesWon + newArr[i].GamesPlayed);
+                }
             }
         }
     }
-    httpRequest.open('GET', './sortindex.php', true);
+    httpRequest.open('GET', './sortgameswon.php', true);
+    httpRequest.send();
+}
+
+function sortDBByGamesPlayed() {
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+                newArr = [];
+                let data = JSON.parse(httpRequest.responseText);
+                for (let i = 0; i < data.length; i++) {
+
+
+                    const temp = new Users(data[i].username, data[i].gameswon,
+                        data[i].gamesplayed, data[i].timeplayed);
+                    newArr[i] = temp;
+                }
+                let myDiv = document.getElementById('insertStuffHere');
+                myDiv.innerHTML = '';
+                for (let i = 0; i < newArr.length; i++){
+                    myDiv.innerHTML += (newArr[i].UserName + ' ' + newArr[i].GamesWon + newArr[i].GamesPlayed);
+                }
+            }
+        }
+    }
+    httpRequest.open('GET', './sortgamesplayed.php', true);
+    httpRequest.send();
+}
+
+function sortDBByTimePlayed() {
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+                newArr = [];
+                let data = JSON.parse(httpRequest.responseText);
+                for (let i = 0; i < data.length; i++) {
+
+
+                    const temp = new Users(data[i].username, data[i].gameswon,
+                        data[i].gamesplayed, data[i].timeplayed);
+                    newArr[i] = temp;
+                }
+                let myDiv = document.getElementById('insertStuffHere');
+                myDiv.innerHTML = '';
+                for (let i = 0; i < newArr.length; i++){
+                    myDiv.innerHTML += (newArr[i].UserName + ' ' + newArr[i].GamesWon + newArr[i].GamesPlayed);
+                }
+            }
+        }
+    }
+    httpRequest.open('GET', './sorttimeplayed.php', true);
     httpRequest.send();
 }
 
@@ -54,16 +103,17 @@ function sortDBByName() {
                 newArr = [];
                 let data = JSON.parse(httpRequest.responseText);
                 for (let i = 0; i < data.length; i++) {
-                    let checkBool = false;
-                    if (data[i].allstarpro == 1) checkBool = true;
-                    const temp = new Idol(data[i].romajiname, data[i].japanesename,
-                        data[i].birthday, data[i].height,
-                        data[i].weight, data[i].bloodtype,
-                        data[i].productioncompany, checkBool, data[i].image);
+
+
+                    const temp = new Users(data[i].username, data[i].gameswon,
+                        data[i].gamesplayed, data[i].timeplayed);
                     newArr[i] = temp;
                 }
                 let myDiv = document.getElementById('insertStuffHere');
                 myDiv.innerHTML = '';
+                for (let i = 0; i < newArr.length; i++){
+                    myDiv.innerHTML += (newArr[i].UserName + ' ' + newArr[i].GamesWon + ' ' + newArr[i].GamesPlayed + ' ' + newArr[i].TimePlayed + ' ');
+                }
             }
         }
     }
