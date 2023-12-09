@@ -1,0 +1,3 @@
+Week of 12/4: 
+Simon: Backend
+Jeff: Frontend
