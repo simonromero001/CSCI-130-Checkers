@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM CheckersTable ORDER BY gamesplayed";
+$sql = "SELECT * FROM CheckersTable ORDER BY gamesplayed DESC";
 $result = $conn->query($sql);
 
 $users = [];

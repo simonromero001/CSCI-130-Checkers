@@ -23,16 +23,14 @@ function sortDBGamesWon() {
                 newArr = [];
                 let data = JSON.parse(httpRequest.responseText);
                 for (let i = 0; i < data.length; i++) {
-
-
                     const temp = new Users(data[i].username, data[i].gameswon,
                         data[i].gamesplayed, data[i].timeplayed);
                     newArr[i] = temp;
                 }
                 let myDiv = document.getElementById('insertStuffHere');
                 myDiv.innerHTML = '';
-                for (let i = 0; i < newArr.length; i++){
-                    myDiv.innerHTML += (newArr[i].UserName + ' ' + newArr[i].GamesPlayed + ' ' + newArr[i].GamesWon + ' ' + newArr[i].TimePlayed + "<br>");
+                for (let i = 0; i < newArr.length; i++) {
+                    myDiv.innerHTML += ('Username: ' + newArr[i].UserName + ' Games Played: ' + newArr[i].GamesPlayed + ' Games Won: ' + newArr[i].GamesWon + ' Time Played: ' + newArr[i].TimePlayed + "<br>");
                 }
             }
         }
@@ -49,16 +47,14 @@ function sortDBByGamesPlayed() {
                 newArr = [];
                 let data = JSON.parse(httpRequest.responseText);
                 for (let i = 0; i < data.length; i++) {
-
-
                     const temp = new Users(data[i].username, data[i].gameswon,
                         data[i].gamesplayed, data[i].timeplayed);
                     newArr[i] = temp;
                 }
                 let myDiv = document.getElementById('insertStuffHere');
                 myDiv.innerHTML = '';
-                for (let i = 0; i < newArr.length; i++){
-                    myDiv.innerHTML += (newArr[i].UserName + ' ' + newArr[i].GamesPlayed + ' ' + newArr[i].GamesWon + ' ' + newArr[i].TimePlayed + "<br>");
+                for (let i = 0; i < newArr.length; i++) {
+                    myDiv.innerHTML += ('Username: ' + newArr[i].UserName + ' Games Played: ' + newArr[i].GamesPlayed + ' Games Won: ' + newArr[i].GamesWon + ' Time Played: ' + newArr[i].TimePlayed + "<br>");
                 }
             }
         }
@@ -75,16 +71,14 @@ function sortDBByTimePlayed() {
                 newArr = [];
                 let data = JSON.parse(httpRequest.responseText);
                 for (let i = 0; i < data.length; i++) {
-
-
                     const temp = new Users(data[i].username, data[i].gameswon,
                         data[i].gamesplayed, data[i].timeplayed);
                     newArr[i] = temp;
                 }
                 let myDiv = document.getElementById('insertStuffHere');
                 myDiv.innerHTML = '';
-                for (let i = 0; i < newArr.length; i++){
-                    myDiv.innerHTML += (newArr[i].UserName + ' ' + newArr[i].GamesPlayed + ' ' + newArr[i].GamesWon + ' ' + newArr[i].TimePlayed + "<br>");
+                for (let i = 0; i < newArr.length; i++) {
+                    myDiv.innerHTML += ('Username: ' + newArr[i].UserName + ' Games Played: ' + newArr[i].GamesPlayed + ' Games Won: ' + newArr[i].GamesWon + ' Time Played: ' + newArr[i].TimePlayed + "<br>");
                 }
             }
         }
@@ -101,16 +95,15 @@ function sortDBByName() {
                 newArr = [];
                 let data = JSON.parse(httpRequest.responseText);
                 for (let i = 0; i < data.length; i++) {
-
-
                     const temp = new Users(data[i].username, data[i].gameswon,
                         data[i].gamesplayed, data[i].timeplayed);
                     newArr[i] = temp;
                 }
                 let myDiv = document.getElementById('insertStuffHere');
                 myDiv.innerHTML = '';
-                for (let i = 0; i < newArr.length; i++){
-                    myDiv.innerHTML += (newArr[i].UserName + ' ' + newArr[i].GamesPlayed + ' ' + newArr[i].GamesWon + ' ' + newArr[i].TimePlayed + "<br>");
+                for (let i = 0; i < newArr.length; i++) {
+
+                    myDiv.innerHTML += ('Username: ' + newArr[i].UserName + ' Games Played: ' + newArr[i].GamesPlayed + ' Games Won: ' + newArr[i].GamesWon + ' Time Played: ' + newArr[i].TimePlayed + "<br>");
                 }
             }
         }
