@@ -85,3 +85,20 @@ body {
 	width: 100vw;
 	height: 100vh;
 }
+
+#insertStuffHere {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+#insertStuffHere:hover {
+  background-color: #e0e0e0;
+}
